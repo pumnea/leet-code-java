@@ -13,23 +13,18 @@ public class Candy {
     public int candy(int[] ratings) {
         if (ratings == null || ratings.length == 0) return 0;
 
-        int len = ratings.length;
         int candies = 1;
         int up = 1;
         int down = 0;
         int peak = 1;
 
-        for (int i = 1; i < len; i++) {
-
-            int current = ratings[i];
-            int previous = ratings[i - 1];
-
-            if (current > previous) {
+        for (int i = 1; i < ratings.length; i++) {
+            if (ratings[i] > ratings[i - 1]) {
                 up++;
                 peak = up;
                 down = 0;
                 candies += up;
-            } else if (current < previous) {
+            } else if (ratings[i] < ratings[i - 1]) {
                 down++;
                 up = 1;
                 candies += down;
