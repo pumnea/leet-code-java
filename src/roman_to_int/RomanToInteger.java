@@ -42,13 +42,10 @@ public class RomanToInteger {
         int length = s.length();
 
         for (int i = 0; i < length; i++) {
-            int currentVal = romanToInt.get(s.charAt(i));
 
-            if (i < length - 1 && currentVal < romanToInt.get(s.charAt(i + 1))) {
-                result -= currentVal;
-            } else {
-                result += currentVal;
-            }
+            if ((i < length - 1 && romanToInt.get(s.charAt(i)) < romanToInt.get(s.charAt(i + 1)))) {
+                result -= romanToInt.get(s.charAt(i));
+            } else result += romanToInt.get(s.charAt(i));
         }
         return result;
     }
