@@ -23,13 +23,13 @@ public class JumpGameII {
         for (int i = 0; i < nums.length; i++) {
             currentPosition = Math.max(currentPosition, i + nums[i]);
 
+            if (endPosition >= nums.length - 1) {
+                return jump;
+            }
+
             if (i == endPosition) {
                 jump++;
                 endPosition = currentPosition;
-            }
-
-            if (endPosition >= nums.length - 1) {
-                return jump;
             }
         }
         return jump;
