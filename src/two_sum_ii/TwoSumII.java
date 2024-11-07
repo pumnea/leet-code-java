@@ -1,5 +1,8 @@
 package two_sum_ii;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order,
  * find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1]
@@ -13,20 +16,15 @@ package two_sum_ii;
  */
 public class TwoSumII {
     public int[] twoSum(int[] numbers, int target) {
-        int start = 0;
-        int end = numbers.length - 1;
+        Map<Integer, Integer> map = new HashMap<>();
 
-        while (start < end) {
-            int sum = numbers[start] + numbers[end];
-
-            if (sum == target) {
-                return new int[]{start + 1, end + 1};
-            } else if (sum < target) {
-                start++;
-            } else {
-                end--;
+        for (int i = 0; i < numbers.length; i++) {
+            if (map.containsKey(target - numbers[i])) {
+                return new int[]{map.get(target - numbers[i]), i + 1};
             }
+            map.put(numbers[i], i + 1);
         }
+
         throw new IllegalArgumentException("No solution found");
     }
 }
